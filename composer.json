@@ -1,0 +1,18 @@
+{
+  "autoload": {
+    "psr-4": {
+      "MBComponents\\": ""
+    }
+  },
+  "description": "Helper library to provide base functionality to common tasks when dealing with data driven applications",
+  "homepage": "https://github.com/multibytesystems/mb-components",
+  "keywords": [ "zend", "doctrine", "entity" ],
+  "license": "MIT",
+  "name" : "multibytesystems/mb-components",
+  "require": {
+    "php": ">=5.3.0",
+    "doctrine/dbal": "~2.5",
+    "doctrine/orm": "~2.5"
+  },
+  "type": "library"
+}

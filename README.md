@@ -1,4 +1,4 @@
-# doctrine-base-entities
+# mb-components
 
 This Zend module provides base classes to simplify handling of doctrine entities. Currently it consists of
 
@@ -6,12 +6,12 @@ This Zend module provides base classes to simplify handling of doctrine entities
 - one general repository class
 - one service class
 
-[![Latest Version](https://img.shields.io/github/release/omanshardt/doctrine-base-entities.svg?style=flat-square)](https://github.com/omanshardt/doctrine-base-entities/releases) [![Total Downloads](https://img.shields.io/packagist/dt/omanshardt/doctrine-base-entities.svg?style=flat-square)](https://packagist.org/packages/omanshardt/doctrine-base-entities) [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Latest Version](https://img.shields.io/github/release/multibytesystems/mb-components.svg?style=flat-square)](https://github.com/multibytesystems/mb-components/releases) [![Total Downloads](https://img.shields.io/packagist/dt/multibytesystems/mb-components.svg?style=flat-square)](https://packagist.org/packages/multibytesystems/mb-components) [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 Install
 -------
 ```bash
-composer require omanshardt/doctrine-base-entities
+composer require multibytesystems/mb-components
 ```
 
 ## Entity classes

@@ -16,10 +16,10 @@ class DateRange extends AbstractValidator
     const ERROR_DATE_NOT_BEFORE = 1;
     const ERROR_DATE_NOT_BETWEEN = 1;
 
-    const NOT_SAME      = 'notSame';
-    const NOT_AFTER     = 'notAfter';
-    const NOT_BEFORE   = 'notBefore';
-    const NOT_BETWEEN   = 'notBetween';
+    const NOT_SAME = 'notSame';
+    const NOT_AFTER = 'notAfter';
+    const NOT_BEFORE = 'notBefore';
+    const NOT_BETWEEN = 'notBetween';
 
     protected $rangeStart;
     protected $rangeEnd;

@@ -141,46 +141,35 @@ class DateRange extends AbstractValidator
         $val = new \DateTime($value);
         switch ($this->getType()) {
             case self::NOT_SAME:
-                error_log('NOT_SAME');
                 $exactDate = new \DateTime($this->getDate());
                 if ($val != $exactDate) {
                     $this->error(self::ERROR_DATE_NOT_SAME, $value);
-                    error_log('error');
                     return false;
                 }
                 break;
             case self::NOT_AFTER:
-                error_log('NOT_AFTER');
                 $rangeEnd = new \DateTime($this->getRangeEnd());
                 if ($val > $rangeEnd) {
                     $this->error(self::ERROR_DATE_NOT_AFTER, $value);
-                    error_log('error');
                     return false;
                 }
                 break;
             case self::NOT_BEFORE:
-                error_log('NOT_BEFORE');
                 $rangeStart = new \DateTime($this->getRangeStart());
                 if ($val < $rangeStart) {
                     $this->error(self::ERROR_DATE_NOT_BEFORE, $value);
-                    error_log('error');
                     return false;
                 }
                 break;
             case self::NOT_BETWEEN:
-                error_log('NOT_BETWEEN');
                 $rangeStart = new \DateTime($this->getRangeStart());
                 $rangeEnd = new \DateTime($this->getRangeEnd());
                 if ($val < $rangeStart || $val > $rangeEnd) {
                     $this->error(self::ERROR_DATE_NOT_BETWEEN, $value);
-                    error_log('error');
                     return false;
                 }
                 break;
         }
-
-        error_log('valid');
-
         return true;
     }
 }

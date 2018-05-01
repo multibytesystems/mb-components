@@ -75,20 +75,16 @@ abstract class MBBaseEntity
         return $this;
     }
 
-
     /**
-     * @ORM\PrePersist
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
      */
-    public function setCreatedValue(LifecycleEventArgs $event) {
-        $this->created = new \DateTime();
-    }
-
-    /**
-     * @ORM\PrePersist
-     * @ORM\PreUpdate
-     */
-    public function setupdatedValue(LifecycleEventArgs $event) {
-        $this->modified = new \DateTime();
+    public function setMBComponentsData(LifecycleEventArgs $event) {
+        $date = new \DateTime();
+        if ($this->getCreated() == null) {
+            $this->setCreated($date);
+        }
+        $this->setModified($date);
     }
 
     abstract public function getTextIdentifier();

@@ -151,26 +151,32 @@ Abstract class MBInterleavedChecksumEntity extends \MBComponents\Entity\MBBaseEn
         return $this;
     }
 
-
     /**
-     * @ORM\PrePersist
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
      */
-    public function setChecksums(LifecycleEventArgs $event) {
-        $entityManager = $event->getEntityManager();
-        $repository = $entityManager->getRepository( get_class($this) );
-        $prevEntity = $repository->findLatest();
+    public function setMBComponentsData(LifecycleEventArgs $event) {
+        $date = new \DateTime();
+        if ($this->getCreated() == null) {
+            $this->setCreated($date);
 
-        $simpleChecksum = $this->createSimpleChecksum();
-        $this->setSimpleChecksum($simpleChecksum);
+            $entityManager = $event->getEntityManager();
+            $repository = $entityManager->getRepository( get_class($this) );
+            $prevEntity = $repository->findLatest();
 
-        $interleavedChecksum = $this->createInterleavedChecksum($prevEntity);
-        $this->setInterleavedChecksum($interleavedChecksum);
-        if ($prevEntity) {
-            $this->setPredecessorId($prevEntity->getId());
+            $simpleChecksum = $this->createSimpleChecksum();
+            $this->setSimpleChecksum($simpleChecksum);
+
+            $interleavedChecksum = $this->createInterleavedChecksum($prevEntity);
+            $this->setInterleavedChecksum($interleavedChecksum);
+            if ($prevEntity) {
+                $this->setPredecessorId($prevEntity->getId());
+            }
+            else {
+                $this->setPredecessorId(0);
+            }
         }
-        else {
-            $this->setPredecessorId(0);
-        }
+        $this->setModified($date);
     }
 
     /**

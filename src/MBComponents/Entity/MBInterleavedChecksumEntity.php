@@ -156,9 +156,11 @@ Abstract class MBInterleavedChecksumEntity extends \MBComponents\Entity\MBBaseEn
      * @ORM\PreUpdate()
      */
     public function setMBComponentsData(LifecycleEventArgs $event) {
+        // https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/events.html
         $date = new \DateTime();
         if ($this->getCreated() == null) {
             $this->setCreated($date);
+            $this->setModified($date);
 
             $entityManager = $event->getEntityManager();
             $repository = $entityManager->getRepository( get_class($this) );
@@ -176,7 +178,9 @@ Abstract class MBInterleavedChecksumEntity extends \MBComponents\Entity\MBBaseEn
                 $this->setPredecessorId(0);
             }
         }
-        $this->setModified($date);
+        else {
+            $this->setModified($date);
+        }
     }
 
     /**

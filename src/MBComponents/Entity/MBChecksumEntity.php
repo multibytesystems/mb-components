@@ -11,7 +11,7 @@ use Zend\Crypt\Password\Bcrypt;
  * @ORM\MappedSuperclass
  * @ORM\HasLifecycleCallbacks()
  */
-Abstract class MBChecksumEntity extends \MBComponents\Entity\MBBaseEntity
+abstract class MBChecksumEntity extends \MBComponents\Entity\MBBaseEntity
 {
     /**
      * @var string

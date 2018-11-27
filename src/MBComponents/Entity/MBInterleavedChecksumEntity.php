@@ -11,7 +11,7 @@ use Zend\Crypt\Password\Bcrypt;
  * @ORM\MappedSuperclass
  * @ORM\HasLifecycleCallbacks()
  */
-Abstract class MBInterleavedChecksumEntity extends \MBComponents\Entity\MBBaseEntity
+abstract class MBInterleavedChecksumEntity extends \MBComponents\Entity\MBBaseEntity
 {
     /**
      * @var string
@@ -191,7 +191,7 @@ Abstract class MBInterleavedChecksumEntity extends \MBComponents\Entity\MBBaseEn
         //if ($this->getCreated()->format('Y-m-d') === $referenceDate->format('Y-m-d')) {
             $entityManager = $event->getEntityManager();
             $repository = $entityManager->getRepository( get_class($this) );
-            $prevEntity = $repository->findPredecessor($this->getPredecessorId());
+            $prevEntity = $repository->find($this->getPredecessorId());
 
             $result = ($this->getInterleavedChecksum() === $this->createInterleavedChecksum($prevEntity));
             $this->setInterleavedIntegrity($result);

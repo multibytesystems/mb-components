@@ -27,31 +27,12 @@ class IntegrityService {
 
     protected function validateInterleavedIntegrity($entities, $entity) {
         $predecessor = $this->findPredecessor($entities, $entity);
-        //$cs = $entity->createInterleavedChecksum($predecessor);
         $result = $entity->verifyInterleavedChecksum($predecessor);
 
         $entity->setInterleavedIntegrity($result);
     }
 
     protected function findPredecessor($entities, $entity) {
-        $item = null;
-        foreach($entities as $obj) {
-            if ($entity->getPredecessorId() == $obj->getId()) {
-                $item = $obj;
-                break;
-            }
-        }
-        return $item;
-    }
-
-    protected function _validateInterleavedIntegrity($entities, $entity) {
-        $predecessor = $this->findPredecessor($entities, $entity);
-        $cs = $entity->createInterleavedChecksum($predecessor);
-        $result = ($entity->getInterleavedChecksum() === $cs);
-        $entity->setInterleavedIntegrity($result);
-    }
-
-    protected function _findPredecessor($entities, $entity) {
         $item = null;
         foreach($entities as $obj) {
             if ($entity->getPredecessorId() == $obj->getId()) {
